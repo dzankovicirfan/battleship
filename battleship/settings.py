@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # custom apps
-    'account'
+    'account',
+    'game'
 ]
 
 MIDDLEWARE = [

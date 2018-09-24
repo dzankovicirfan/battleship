@@ -7,7 +7,8 @@ from django.contrib import admin
 
 api_urls = (
     [
-        path('account/', include('account.urls'))
+        path('account/', include('account.urls')),
+        path('game/', include('game.urls'))
     ],
     'api'
 )
