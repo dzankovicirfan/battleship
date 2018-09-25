@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 
 from rest_framework import viewsets, mixins
 
-from .models import Game
-from .serializers import GameSerializer
+from .models import Game, Ship
+from .serializers import GameSerializer, ShipSerializer
 
 
 class GameView(
