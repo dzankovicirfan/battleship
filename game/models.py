@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator, MinValueValidator
+
 from .utils import SHIP_TYPES_CHOICHES
 
 
@@ -42,3 +44,14 @@ class Ship(models.Model):
         verbose_name_plural = 'ships'
 
 
+class ShipPosition(models.Model):
+    ship = models.ForeignKey(
+        Ship, related_name='shippositions', on_delete=models.CASCADE
+    )
+    horizontal = models.BooleanField(default=True)
+    x = models.SmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
+    y = models.SmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
+
+    class Meta:
+        verbose_name = 'shippostion'
+        verbose_name_plural = 'shippostions'

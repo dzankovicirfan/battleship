@@ -5,7 +5,7 @@ from django.urls import path, include
 
 from rest_framework import routers
 
-from .views import GameView
+from .views import GameView, ShipPostionView
 
 router = routers.SimpleRouter()
 router.register(r'game', GameView)
@@ -13,5 +13,6 @@ router.register(r'game', GameView)
 app_name = 'game'
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('shippositon/<int:game_id>/', ShipPostionView.as_view(), name='shippositon')
 ]

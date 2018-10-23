@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from rest_framework import serializers
 
-from .models import Game, Ship
+from .models import Game, Ship, ShipPosition
 from .services import CreateShips
 
 
@@ -27,10 +27,9 @@ class ShipSerializer(serializers.ModelSerializer):
         model = Ship
         fields = ('id', 'game', 'player', 'ship')
 
-    # def create(self, validated_data):
-    #     game = validated_data['game']
 
-    #     if validated_data['player'] not in game.players:
-    #         raise serializers.ValidationError('Player from wrong game.')
+class ShipPositonSerializer(serializers.ModelSerializer):
 
-    #     return super(ShipSerializer, self).create(validated_data)
+    class Meta:
+        model = ShipPosition
+        fields = ('ship', 'horizontal', 'x', 'y')
