@@ -17,6 +17,7 @@ class Game(models.Model):
     player2 = models.ForeignKey(
         User, related_name='games2', on_delete=models.CASCADE
     )
+    player_turn = models.BooleanField(default=True)
 
     def __str__(self):
         return '%s' % self.name
@@ -55,3 +56,20 @@ class ShipPosition(models.Model):
     class Meta:
         verbose_name = 'shippostion'
         verbose_name_plural = 'shippostions'
+
+
+class Attack(models.Model):
+    game = models.ForeignKey(
+        Game, related_name='attacks', on_delete=models.CASCADE
+        )
+    player = models.ForeignKey(
+        User, related_name='attacks', on_delete=models.CASCADE
+    )
+    x = models.SmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
+    y = models.SmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
+    hit = models.BooleanField(default=False)
+
+    class Meta:
+        unique_together = ('game', 'player', 'x', 'y')
+        verbose_name = 'attack'
+        verbose_name_plural = 'attacks'

@@ -5,8 +5,8 @@ from rest_framework import generics, status
 from rest_framework import viewsets, mixins
 from rest_framework.response import Response
 
-from .models import Game, Ship, ShipPosition
-from .serializers import GameSerializer,  ShipPositonSerializer
+from .models import Game, Ship, ShipPosition, Attack
+from .serializers import GameSerializer,  ShipPositonSerializer, AttackSerializer
 from .services import ship_positioning
 
 
@@ -39,3 +39,15 @@ class ShipPostionView(generics.CreateAPIView):
         return Response(
             serializer.data, status=status.HTTP_201_CREATED
         )
+
+
+class AttackView(
+    mixins.CreateModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.DestroyModelMixin,
+    mixins.ListModelMixin,
+    viewsets.GenericViewSet
+):
+    queryset = Attack.objects.all()
+    serializer_class = AttackSerializer
+    filter_fields = ('game', 'player', 'hit')

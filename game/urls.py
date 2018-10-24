@@ -5,10 +5,11 @@ from django.urls import path, include
 
 from rest_framework import routers
 
-from .views import GameView, ShipPostionView
+from .views import GameView, ShipPostionView, AttackView
 
 router = routers.SimpleRouter()
 router.register(r'game', GameView)
+router.register(r'attack', AttackView)
 
 app_name = 'game'
 
