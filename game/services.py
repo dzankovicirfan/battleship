@@ -20,14 +20,11 @@ class CreateShips(object):
 
     def create_ship(self, ship_type):
 
-        # create ships for player 1
         ship1 = Ship.objects.create(
             game=self.game,
             player=self.player1,
             ship=ship_type
         )
-
-        # create ships for player 2
         ship2 = Ship.objects.create(
             game=self.game,
             player=self.player2,

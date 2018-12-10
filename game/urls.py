@@ -15,5 +15,5 @@ app_name = 'game'
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('shipposition/<int:game_id>/', ShipPostionView.as_view(), name='shipposition')
+    path('shippositon/<int:game_id>/', ShipPostionView.as_view(), name='shippositon')
 ]
