@@ -10,11 +10,14 @@ from .services import CreateShips
 
 
 def turn(game, player):
+    '''
+    Check if it is your turn to play
+    '''
     if player == game.player1 and game.player_turn:
-        print(player == game.player1 and game.player_turn)
         game.player_turn = False
         game.save()
         return
+
     if player == game.player2 and not game.player_turn:
         game.player_turn = True
         game.save()
@@ -43,7 +46,7 @@ class ShipSerializer(serializers.ModelSerializer):
         fields = ('id', 'game', 'player', 'ship')
 
 
-class ShipPositonSerializer(serializers.ModelSerializer):
+class ShipPositionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ShipPosition
@@ -73,7 +76,7 @@ class AttackSerializer(serializers.ModelSerializer):
         game = validated_data['game']
         validated_data['player'] = player
 
-        turn(game, player)
+        turn(game, player) # check is it players turn
 
         ships = Ship.objects.filter(game=game, player=player)
         ship_hit = ShipPosition.objects.filter(

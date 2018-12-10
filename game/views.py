@@ -6,7 +6,7 @@ from rest_framework import viewsets, mixins
 from rest_framework.response import Response
 
 from .models import Game, Ship, ShipPosition, Attack
-from .serializers import GameSerializer,  ShipPositonSerializer, AttackSerializer
+from .serializers import GameSerializer,  ShipPositionSerializer, AttackSerializer
 from .services import ship_positioning
 
 
@@ -23,8 +23,15 @@ class GameView(
 
 
 class ShipPostionView(generics.CreateAPIView):
+    '''
+    Creating ship positions
+    -data is ship positions
+
+    function ship_position takes ships from a player in a game and ship positions
+    if validation passes it creates ship positions
+    '''
     queryset = ShipPosition.objects.all()
-    serializer_class = ShipPositonSerializer
+    serializer_class = ShipPositionSerializer
 
     def create(self, request, game_id):
         self.user = request.user

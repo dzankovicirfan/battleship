@@ -15,6 +15,7 @@ from .serializers import UserSerializer
 class UserView(ModelViewSet):
     '''
     url: api/account/user/
+    filtering user by id and username
     '''
     queryset = User.objects.all()
     serializer_class = UserSerializer
