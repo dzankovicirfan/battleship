@@ -2,15 +2,19 @@ admin:
 /admin/
 
 account:
-
+-----------------------------
 /api/account/signup/     POST    sign up user
+{
+	"username": "irfan",
+	"password": "qwerty123456"
+}
 ------------------------------
 /api/account/login/     POST  login
 {
 	"username": "irfan",
 	"password": "qwerty123456"
 }
-
+------------------------------
 
 /api/account/user/      GET   get users
 /api/account/user/      POST  create user
