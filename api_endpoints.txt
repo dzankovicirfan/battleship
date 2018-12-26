@@ -1,0 +1,38 @@
+admin:
+/admin/
+
+account:
+
+/api/account/signup/     POST    sign up user
+------------------------------
+/api/account/login/     POST  login
+{
+	"username": "irfan",
+	"password": "qwerty123456"
+}
+
+
+/api/account/user/      GET   get users
+/api/account/user/      POST  create user
+/api/account/user/<id>/      GET  get user
+/api/account/user/<id>/      POST   update user
+/api/account/user/<id>/      DELETE   user
+
+
+game:
+
+/api/game/          GET     get games
+/api/game/          POST    create game
+/api/game/<id>/     GET     get game
+/api/game/<id>/     POST    update game
+/api/game/<id>/     DELETE  delete game
+
+
+/api/attack/          GET     get attacks
+/api/attack/          POST    create attack
+/api/attack/<id>/     GET     get attack
+/api/attack/<id>/     POST    update attack
+/api/attack/<id>/     DELETE  delete attack
+
+/api/shippositon/<game_id>/ GET   shipposition for a user in a game
+/api/shippositon/<game_id>/ POST  create ShipPosition for user in a game"

@@ -37,7 +37,11 @@ class GameSerializer(serializers.ModelSerializer):
 
 
 class ShipSerializer(serializers.ModelSerializer):
-
+    '''
+    Ships are created as soon as game is created.
+    ShipSerializer does not have its own view, it just get serialized for game,
+    and player view
+    '''
     class Meta:
         model = Ship
         fields = ('id', 'game', 'player', 'ship')

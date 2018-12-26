@@ -31,9 +31,13 @@ class UserSignUpView(CreateAPIView):
     permission_classes = (AllowAny, )
 
     def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
+        user_data = request.data
+        serializer = self.get_serializer(data=user_data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
+        user = User.objects.filter(username=user_data['username']).first()
+        user.set_password(user_data['password'])
+        user.save()
 
         return Response(
             serializer.data, status=status.HTTP_201_CREATED
