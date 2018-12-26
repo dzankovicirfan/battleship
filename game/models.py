@@ -18,6 +18,7 @@ class Game(models.Model):
         User, related_name='games2', on_delete=models.CASCADE
     )
     player_turn = models.BooleanField(default=True)
+    active = models.BooleanField(default=True)
 
     def __str__(self):
         return '%s' % self.name

@@ -12,3 +12,6 @@ SHIP_TYPES = [
 ]
 
 SHIP_TYPES_CHOICHES = [(i+1, ship.name) for i, ship in enumerate(SHIP_TYPES)]
+
+
+ATTACK_COUNT = 17

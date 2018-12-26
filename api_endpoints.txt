@@ -15,28 +15,68 @@ account:
 	"password": "qwerty123456"
 }
 ------------------------------
-
 /api/account/user/      GET   get users
 /api/account/user/      POST  create user
 /api/account/user/<id>/      GET  get user
 /api/account/user/<id>/      POST   update user
 /api/account/user/<id>/      DELETE   user
 
-
+-------------------------------------
 game:
 
 /api/game/          GET     get games
 /api/game/          POST    create game
+-----------------------------------
+{
+	"name": "Prvi mec",
+	"player1": 11,
+	"player2": 1
+}
+-----------------------------------
 /api/game/<id>/     GET     get game
 /api/game/<id>/     POST    update game
 /api/game/<id>/     DELETE  delete game
 
 
-/api/attack/          GET     get attacks
-/api/attack/          POST    create attack
-/api/attack/<id>/     GET     get attack
-/api/attack/<id>/     POST    update attack
-/api/attack/<id>/     DELETE  delete attack
+/api/game/attack/          GET     get attacks
+/api/game/attack/          POST    create attack
+/api/game/attack/<id>/     GET     get attack
+/api/game/attack/<id>/     POST    update attack
+/api/game/attack/<id>/     DELETE  delete attack
 
-/api/shippositon/<game_id>/ GET   shipposition for a user in a game
-/api/shippositon/<game_id>/ POST  create ShipPosition for user in a game"
+
+-------------------------------------------------
+/api/game/shipposition/<game_id>/ POST  create ShipPosition for user in a game"
+[
+	{
+		"ship": 25,
+		"horizontal": true,
+		"x": 1,
+		"y": 1
+	},
+	{
+		"ship": 27,
+		"horizontal": true,
+		"x": 1,
+		"y": 2
+	},
+	{
+		"ship": 29,
+		"horizontal": true,
+		"x": 1,
+		"y": 3
+	},
+	{
+		"ship": 31,
+		"horizontal": true,
+		"x": 1,
+		"y": 4
+	},
+	{
+		"ship": 33,
+		"horizontal": true,
+		"x": 1,
+		"y": 5
+	}
+]
+--------------------------------------------------

@@ -3,10 +3,12 @@ from __future__ import unicode_literals
 
 from rest_framework import serializers
 from rest_framework.validators import UniqueTogetherValidator
+from django.http import HttpResponse
 
 
 from .models import Game, Ship, ShipPosition, Attack
 from .services import CreateShips
+from .utils import ATTACK_COUNT
 
 
 def turn(game, player):
@@ -26,7 +28,7 @@ class GameSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Game
-        fields = ('id', 'name', 'player1', 'player2')
+        fields = ('id', 'name', 'player1', 'player2', 'player_turn')
 
     def create(self, validated_data):
         if validated_data['player1'] != validated_data['player2']:
@@ -47,7 +49,7 @@ class ShipSerializer(serializers.ModelSerializer):
         fields = ('id', 'game', 'player', 'ship')
 
 
-class ShipPositonSerializer(serializers.ModelSerializer):
+class ShipPositionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ShipPosition
@@ -86,5 +88,17 @@ class AttackSerializer(serializers.ModelSerializer):
         if ship_hit:
             validated_data['hit'] = True
 
+        # TODO: finish game when someone hit everything
+
         attack = super(AttackSerializer, self).create(validated_data)
-        return attack
+
+        game_hits = Attack.objects.filter(game=game, player=player, hit=True).count()
+
+        if game_hits < game_hits:
+            return attack
+
+        game = Game.objects.get(id=game.id)
+        game.active = False
+        game.save()
+
+        return HttpResponse('You WON!!!')
