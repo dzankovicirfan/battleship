@@ -33,7 +33,7 @@ Clone project, and go in to root of the project.
     $ pip install -r requirements.txt
     $ python manage.py migrate
 
-    # _runserver localy_
+    # runserver localy
     $ python manage.py runserver
 
 
