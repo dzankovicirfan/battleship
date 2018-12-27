@@ -54,7 +54,9 @@ More about JWT token: https://getblimp.github.io/django-rest-framework-jwt/
 
 __Sign up__
 
-/attack/signup/
+endpoint:
+
+    /attack/signup/
 
 method: __POST__
 
@@ -65,7 +67,9 @@ method: __POST__
 
 __Login__
 
-/attack/login/
+endpoint:
+
+    /attack/login/
 
 method: __POST__
 
