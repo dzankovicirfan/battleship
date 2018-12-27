@@ -12,6 +12,9 @@ from .utils import ATTACK_COUNT
 
 
 def turn(game, player):
+    '''
+    Function that checks if player can attack(or is it other player turn)
+    '''
     if player == game.player1 and game.player_turn:
         print(player == game.player1 and game.player_turn)
         game.player_turn = False
@@ -28,13 +31,17 @@ class GameSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Game
-        fields = ('id', 'name', 'player1', 'player2', 'player_turn')
+        fields = ('id', 'name', 'player1', 'player2', 'player_turn', 'active')
 
     def create(self, validated_data):
+        # validate players for a game
         if validated_data['player1'] != validated_data['player2']:
             game = super(GameSerializer, self).create(validated_data)
+            # when we create game, create ships for a game also
             CreateShips(game, game.player1, game.player2).create()
+
             return game
+
         raise serializers.ValidationError('Players have to be different.')
 
 

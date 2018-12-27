@@ -7,7 +7,7 @@ from .models import Game, Ship, ShipPosition, Attack
 
 
 class GameAdmin(admin.ModelAdmin):
-    list_display = list_display_links = ['name', 'player1', 'player2']
+    list_display = list_display_links = ['name', 'player1', 'player2', 'active']
 
 
 class ShipAdmin(admin.ModelAdmin):
@@ -15,7 +15,7 @@ class ShipAdmin(admin.ModelAdmin):
 
 
 class ShipPositionAdmin(admin.ModelAdmin):
-    list_display = list_display_links = ['ship', 'x', 'y']
+    list_display = list_display_links = ['ship', 'horizontal', 'x', 'y']
 
 
 class AttackAdmin(admin.ModelAdmin):

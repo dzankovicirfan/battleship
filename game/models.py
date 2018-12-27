@@ -41,6 +41,10 @@ class Ship(models.Model):
     )
     ship = models.SmallIntegerField(choices=SHIP_TYPES_CHOICHES)
 
+
+    def __str__(self):
+        return '%s - %s' % (self.player, self.game)
+
     class Meta:
         verbose_name = 'ship'
         verbose_name_plural = 'ships'
@@ -53,6 +57,9 @@ class ShipPosition(models.Model):
     horizontal = models.BooleanField(default=True)
     x = models.SmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
     y = models.SmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
+
+    def __str__(self):
+        return '%s - %s' % (self.ship, self.game)
 
     class Meta:
         verbose_name = 'shippostion'
