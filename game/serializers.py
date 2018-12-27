@@ -77,6 +77,9 @@ class AttackSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         player = self.context['request'].user
         game = validated_data['game']
+        print(game)
+        if not game.active:
+            raise serializers.ValidationError('Game is alredy finished!')
         validated_data['player'] = player
 
         turn(game, player)
@@ -101,4 +104,4 @@ class AttackSerializer(serializers.ModelSerializer):
         game.active = False
         game.save()
 
-        return HttpResponse('You WON!!!')
+        return attack
