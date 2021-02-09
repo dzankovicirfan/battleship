@@ -184,8 +184,8 @@ method: __POST__
     }
 
 * __game__ is id of the game
-* __x__ is integer in ragne 1-10
-* __y__ is integer in ragne 1-10
+* __x__ is integer in range 1-10
+* __y__ is integer in range 1-10
 
 response is the attack object:
 
